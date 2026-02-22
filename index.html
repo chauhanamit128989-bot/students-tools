@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Tools • All-in-One Study Helper</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav-container">
+      <h1 class="logo">Student<span>Tools</span></h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+          <li><a href="#" onclick="showPage('tools')">Tools</a></li>
+          <li><a href="#" onclick="showPage('about')">About</a></li>
+          <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- HOME -->
+    <section id="home" class="page active hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1 class="hero-title animate-slide">
+          Your All-in-One <span>Student Toolkit</span>
+        </h1>
+        <p class="hero-subtitle animate-fade delay-1">
+          Free, fast & beautiful tools — CGPA, Pomodoro, PDF tools, notes, calculators & more.
+        </p>
+        <div class="hero-cta animate-fade delay-2">
+          <button class="btn primary" onclick="showPage('tools')">Explore All Tools</button>
+          <button class="btn secondary" onclick="showPage('about')">Learn More</button>
+        </div>
+        <div class="hero-stats animate-fade delay-3">
+          <div class="stat"><span class="stat-value" data-count="18">0</span><span class="stat-label">Tools</span></div>
+          <div class="stat"><span class="stat-value">100%</span><span class="stat-label">Free</span></div>
+          <div class="stat"><span class="stat-value">No</span><span class="stat-label">Login</span></div>
+        </div>
+      </div>
+      <div class="floating-shapes">
+        <div class="shape shape-1">📄</div>
+        <div class="shape shape-2">🧮</div>
+        <div class="shape shape-3">⏳</div>
+        <div class="shape shape-4">📝</div>
+        <div class="shape shape-5">✅</div>
+      </div>
+    </section>
+
+    <!-- TOOLS OVERVIEW -->
+    <section id="tools" class="page">
+  <div class="container">
+    <h1 class="section-title">Powerful Tools for Students</h1>
+    <p style="text-align:center; color:#64748b; margin-bottom:3rem; max-width:600px; margin-left:auto; margin-right:auto;">
+      Everything you need in one place — from file magic to focus timers and grade trackers.
+    </p>
+
+    <div class="tools-grid">
+
+      <div class="tool-group" data-category="file" data-icon="📁">
+        <h2>File Tools</h2>
+        <div class="card" onclick="showTool('image-to-pdf')">Image to PDF Converter</div>
+        <div class="card" onclick="showTool('pdf-merger')">PDF Merger</div>
+        <div class="card" onclick="showTool('pdf-splitter')">PDF Splitter</div>
+        <div class="card" onclick="showTool('image-compressor')">Image Compressor</div>
+        <div class="card" onclick="showTool('image-resizer')">Image Resizer</div>
+      </div>
+
+      <div class="tool-group" data-category="academic" data-icon="🎓">
+        <h2>Academic Calculators</h2>
+        <div class="card" onclick="showTool('cgpa-calculator')">CGPA Calculator</div>
+        <div class="card" onclick="showTool('percentage-calculator')">Percentage Calculator</div>
+        <div class="card" onclick="showTool('grade-calculator')">Grade Calculator</div>
+        <div class="card" onclick="showTool('attendance-calculator')">Attendance Calculator</div>
+      </div>
+
+      <div class="tool-group" data-category="time" data-icon="⏱️">
+        <h2>Time & Focus Tools</h2>
+        <div class="card" onclick="showTool('age-calculator')">Age Calculator</div>
+        <div class="card" onclick="showTool('study-timer')">Pomodoro Timer</div>
+      </div>
+
+      <div class="tool-group" data-category="text" data-icon="✍️">
+        <h2>Text Utilities</h2>
+        <div class="card" onclick="showTool('word-counter')">Word Counter</div>
+        <div class="card" onclick="showTool('character-counter')">Character Counter</div>
+        <div class="card" onclick="showTool('notes-maker')">Quick Notes</div>
+        <div class="card" onclick="showTool('text-formatter')">Text Formatter</div>
+      </div>
+
+      <div class="tool-group" data-category="math" data-icon="🧮">
+        <h2>Math & Calculators</h2>
+        <div class="card" onclick="showTool('basic-calculator')">Basic Calculator</div>
+        <div class="card" onclick="showTool('scientific-calculator')">Scientific Calculator</div>
+      </div>
+
+      <div class="tool-group" data-category="productivity" data-icon="🚀">
+        <h2>Productivity Boosters</h2>
+        <div class="card" onclick="showTool('to-do-list')">To-Do List</div>
+        <div class="card" onclick="showTool('study-planner')">Study Planner</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+    <!-- INDIVIDUAL TOOL PAGES -->
+    <section id="image-to-pdf" class="page tool-page">
+  <div class="container">
+    <h1>Image to PDF Converter</h1>
+    
+    <p style="margin: 1rem 0; color: #555; text-align: center;">
+      एक या कई इमेज चुनें (एक साथ 100+ भी चुन सकते हैं)
+    </p>
+
+    <input 
+      type="file" 
+      accept="image/*" 
+      id="img2pdf-files" 
+      multiple 
+      style="margin: 1.5rem auto; display: block; max-width: 500px;"
+    >
+
+    <!-- प्रीव्यू दिखाने के लिए (ऑप्शनल लेकिन यूजर एक्सपीरियंस बेहतर करता है) -->
+    <div id="preview-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; justify-content: center;"></div>
+
+    <button onclick="convertImagesToPDF()">Convert & Download PDF</button>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+    <section id="pdf-merger" class="page tool-page">
+      <div class="container">
+        <h1>PDF Merger</h1>
+        <input type="file" accept=".pdf" multiple id="pdf-merge-files">
+        <button onclick="mergePDFs()">Merge PDFs</button>
+        <p>(Full merge needs pdf-lib or similar — this is placeholder)</p>
+        <button class="back-btn" onclick="showPage('tools')">← Back</button>
+      </div>
+    </section>
+
+    <section id="pdf-splitter" class="page tool-page">
+      <div class="container">
+        <h1>PDF Splitter</h1>
+        <input type="file" accept=".pdf" id="pdf-split-file">
+        <button onclick="splitPDF()">Split PDF</button>
+        <p>(Full split needs pdf-lib — placeholder)</p>
+        <button class="back-btn" onclick="showPage('tools')">← Back</button>
+      </div>
+    </section>
+
+    <section id="image-compressor" class="page tool-page">
+      <div class="container">
+        <h1>Image Compressor</h1>
+        <input type="file" accept="image/*" id="compress-file">
+        <label>Quality (0.1–1): <input type="number" id="compress-q" step="0.1" min="0.1" max="1" value="0.7"></label>
+        <button onclick="compressImage()">Compress & Download</button>
+        <a id="compress-dl" style="display:none">Download Compressed</a>
+        <button class="back-btn" onclick="showPage('tools')">← Back</button>
+      </div>
+    </section>
+
+    <section id="image-resizer" class="page tool-page">
+      <div class="container">
+        <h1>Image Resizer</h1>
+        <input type="file" accept="image/*" id="resize-file">
+        <label>Width: <input type="number" id="resize-w" value="800"></label>
+        <label>Height: <input type="number" id="resize-h" value="600"></label>
+        <button onclick="resizeImage()">Resize & Download</button>
+        <a id="resize-dl" style="display:none">Download Resized</a>
+        <button class="back-btn" onclick="showPage('tools')">← Back</button>
+      </div>
+    </section>
+
+    <section id="cgpa-calculator" class="page tool-page">
+  <div class="container cgpa-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      CGPA Calculator
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="calculator-box animate-fade-up delay-2">
+      <div class="input-group textarea-group">
+        <textarea 
+          id="cgpa-input" 
+          rows="5"
+          placeholder=" "
+          required
+        ></textarea>
+        <label for="cgpa-input">Enter GPAs (comma separated)<br><small>e.g. 8.5, 9.0, 7.8, 8.2</small></label>
+      </div>
+
+      <button onclick="calculateCgpa()" class="calc-btn">
+        Calculate CGPA
+      </button>
+
+      <div id="cgpa-result" class="result-display"></div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="percentage-calculator" class="page tool-page">
+  <div class="container percentage-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Percentage Calculator
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="calculator-box animate-fade-up delay-2">
+      <div class="input-row">
+        <div class="input-group">
+          <input 
+            type="number" 
+            id="pct-obt" 
+            min="0" 
+            placeholder=" "
+            required
+          >
+          <label>Marks Obtained</label>
+        </div>
+
+        <div class="input-group">
+          <input 
+            type="number" 
+            id="pct-total" 
+            min="1" 
+            placeholder=" "
+            required
+          >
+          <label>Total Marks</label>
+        </div>
+      </div>
+
+      <button onclick="calcPercentage()" class="calc-btn">
+        Calculate Percentage
+      </button>
+
+      <div id="pct-result" class="result-display"></div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="grade-calculator" class="page tool-page">
+  <div class="container">
+    <h1 class="tool-title">Grade Calculator</h1>
+    <div class="underline"></div>
+
+    <div class="calculator-box">
+      <div class="input-group">
+        <input 
+          type="number" 
+          id="grade-marks" 
+          min="0" 
+          max="100" 
+          placeholder=" "
+        >
+        <label for="grade-marks">Your Marks (0-100)</label>
+      </div>
+
+      <button onclick="calcGrade()" class="calc-btn">
+        Get Grade
+      </button>
+
+      <div id="grade-result" class="result-box"></div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="attendance-calculator" class="page tool-page">
+  <div class="container attendance-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Attendance Calculator
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="calculator-box animate-fade-up delay-2">
+      <div class="input-row">
+        <div class="input-group">
+          <input 
+            type="number" 
+            id="att-present" 
+            min="0" 
+            placeholder=" "
+            required
+          >
+          <label>Classes Present</label>
+        </div>
+
+        <div class="input-group">
+          <input 
+            type="number" 
+            id="att-total" 
+            min="1" 
+            placeholder=" "
+            required
+          >
+          <label>Total Classes</label>
+        </div>
+      </div>
+
+      <button onclick="calculateAttendance()" class="calc-btn">
+        Calculate Attendance
+      </button>
+
+      <div id="att-result" class="result-display"></div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="age-calculator" class="page tool-page">
+  <div class="container age-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Age Calculator
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="calculator-box animate-fade-up delay-2">
+      <div class="input-group">
+        <input 
+          type="date" 
+          id="age-dob" 
+          required
+        >
+        <label for="age-dob">Date of Birth</label>
+      </div>
+
+      <button onclick="calculateAge()" class="calc-btn">
+        Calculate Age
+      </button>
+
+      <div id="age-result" class="result-display"></div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="study-timer" class="page tool-page">
+      <div class="container">
+        <h1>Pomodoro Study Timer</h1>
+        <p>Time left: <span id="timer">25:00</span></p>
+        <button onclick="startPomodoro()">Start</button>
+        <button onclick="stopPomodoro()">Stop</button>
+        <button onclick="resetPomodoro()">Reset</button>
+        <button class="back-btn" onclick="showPage('tools')">← Back</button>
+      </div>
+    </section>
+
+    <section id="word-counter" class="page tool-page">
+  <div class="container word-counter-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Word Counter
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="counter-box animate-fade-up delay-2">
+      <textarea 
+        id="word-txt" 
+        placeholder="Type or paste your text here..."
+        rows="10"
+      ></textarea>
+
+      <div class="action-row">
+        <button onclick="countWords()" class="count-btn">
+          Count Words & Characters
+        </button>
+      </div>
+
+      <div class="stats-display" id="word-stats">
+        <div class="stat-item">
+          <span class="stat-value" id="word-count">0</span>
+          <span class="stat-label">Words</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="char-count">0</span>
+          <span class="stat-label">Characters</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="char-no-space">0</span>
+          <span class="stat-label">Characters (no spaces)</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="character-counter" class="page tool-page">
+  <div class="container char-counter-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Character Counter
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="counter-box animate-fade-up delay-2">
+      <textarea 
+        id="char-txt" 
+        placeholder="Type or paste your text here..."
+        rows="10"
+      ></textarea>
+
+      <div class="action-row">
+        <button onclick="countChars()" class="count-btn">
+          Count Characters
+        </button>
+      </div>
+
+      <div class="stats-display" id="char-stats">
+        <div class="stat-item">
+          <span class="stat-value" id="total-chars">0</span>
+          <span class="stat-label">Total Characters</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="chars-no-space">0</span>
+          <span class="stat-label">Characters (no spaces)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="word-count-from-char">0</span>
+          <span class="stat-label">Approximate Words</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+    <section id="notes-maker" class="page tool-page">
+  <div class="container notes-container">
+    
+    <h1 class="notes-title">
+      ✍️ Quick Notes → PDF
+    </h1>
+    
+    <div class="underline"></div>
+
+    <div class="notes-box">
+      <textarea 
+        id="notes-area" 
+        placeholder="यहाँ अपनी नोट्स लिखें... (Save पर PDF बनकर डाउनलोड हो जाएगा)"
+        rows="12"
+      ></textarea>
+
+      <div class="notes-buttons">
+        <button onclick="saveAsPDF()" class="save-pdf-btn">
+          📄 Save as PDF
+        </button>
+        
+        <button onclick="saveNote()" class="save-btn">
+          💾 Save (local)
+        </button>
+        
+        <button onclick="loadNote()" class="load-btn">
+          🔄 Load Last Note
+        </button>
+      </div>
+
+      <p id="notes-msg" class="status-msg"></p>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="text-formatter" class="page tool-page">
+  <div class="container formatter-container">
+    
+    <h1 class="tool-title animate-bounce-in">
+      Text Formatter
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="formatter-box animate-fade-up delay-2">
+      <textarea 
+        id="format-txt" 
+        placeholder="Type or paste your text here..."
+        rows="10"
+      ></textarea>
+
+      <div class="format-buttons">
+        <button onclick="toUpper()" class="format-btn upper-btn">
+          UPPERCASE
+        </button>
+        
+        <button onclick="toLower()" class="format-btn lower-btn">
+          lowercase
+        </button>
+        
+        <button onclick="toTitleCase()" class="format-btn title-btn">
+          Title Case
+        </button>
+        
+        <button onclick="toSentenceCase()" class="format-btn sentence-btn">
+          Sentence case
+        </button>
+      </div>
+
+      <div class="preview-box" id="preview">
+        <p>Formatted text will appear here...</p>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+    <section id="basic-calculator" class="page tool-page">
+  <div class="container calculator-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Basic Calculator
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="calc-wrapper animate-fade-up delay-2">
+      <input type="text" id="calc-display" readonly placeholder="0" />
+
+      <div class="calc-grid">
+        <button class="calc-btn operator" onclick="appendToDisplay('7')">7</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('8')">8</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('9')">9</button>
+        <button class="calc-btn func" onclick="appendToDisplay('/')">/</button>
+
+        <button class="calc-btn operator" onclick="appendToDisplay('4')">4</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('5')">5</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('6')">6</button>
+        <button class="calc-btn func" onclick="appendToDisplay('*')">×</button>
+
+        <button class="calc-btn operator" onclick="appendToDisplay('1')">1</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('2')">2</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('3')">3</button>
+        <button class="calc-btn func" onclick="appendToDisplay('-')">-</button>
+
+        <button class="calc-btn operator" onclick="appendToDisplay('0')">0</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('.')">.</button>
+        <button class="calc-btn equals" onclick="calculate()">=</button>
+        <button class="calc-btn func" onclick="appendToDisplay('+')">+</button>
+
+        <button class="calc-btn clear" onclick="clearDisplay()">C</button>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="scientific-calculator" class="page tool-page">
+  <div class="container sci-calculator-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      Scientific Calculator
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="calc-wrapper animate-fade-up delay-2">
+      <input type="text" id="sci-display" readonly placeholder="0" />
+
+      <div class="sci-grid">
+        <!-- Scientific functions row 1 -->
+        <button class="calc-btn sci-func" onclick="appendSci('sin(')">sin</button>
+        <button class="calc-btn sci-func" onclick="appendSci('cos(')">cos</button>
+        <button class="calc-btn sci-func" onclick="appendSci('tan(')">tan</button>
+        <button class="calc-btn sci-func" onclick="appendSci('Math.sqrt(')">√</button>
+
+        <!-- Power & parentheses -->
+        <button class="calc-btn sci-func" onclick="appendSci('**')">xʸ</button>
+        <button class="calc-btn sci-func" onclick="appendSci('(')">(</button>
+        <button class="calc-btn sci-func" onclick="appendSci(')')">)</button>
+        <button class="calc-btn clear" onclick="clearDisplay()">C</button>
+
+        <!-- Numbers & operators -->
+        <button class="calc-btn num" onclick="appendToDisplay('7')">7</button>
+        <button class="calc-btn num" onclick="appendToDisplay('8')">8</button>
+        <button class="calc-btn num" onclick="appendToDisplay('9')">9</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
+
+        <button class="calc-btn num" onclick="appendToDisplay('4')">4</button>
+        <button class="calc-btn num" onclick="appendToDisplay('5')">5</button>
+        <button class="calc-btn num" onclick="appendToDisplay('6')">6</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+
+        <button class="calc-btn num" onclick="appendToDisplay('1')">1</button>
+        <button class="calc-btn num" onclick="appendToDisplay('2')">2</button>
+        <button class="calc-btn num" onclick="appendToDisplay('3')">3</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+
+        <button class="calc-btn num zero" onclick="appendToDisplay('0')">0</button>
+        <button class="calc-btn num" onclick="appendToDisplay('.')">.</button>
+        <button class="calc-btn equals" onclick="calculateSci()">=</button>
+        <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+
+    <section id="to-do-list" class="page tool-page">
+  <div class="container todo-container">
+    
+    <h1 class="tool-title animate-slide-down">
+      To-Do List
+    </h1>
+    
+    <div class="underline animate-expand delay-1"></div>
+
+    <div class="todo-box animate-fade-up delay-2">
+      <div class="input-row">
+        <input 
+          type="text" 
+          id="todo-input" 
+          placeholder="Add a new task..."
+          autocomplete="off"
+        >
+        <button onclick="addTodo()" class="add-btn">
+          Add
+        </button>
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+
+      <div class="todo-stats" id="todo-stats">
+        <span id="task-count">0 tasks</span>
+        <button onclick="clearAllTodos()" class="clear-all-btn" style="display:none;">
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('tools')">← Back</button>
+  </div>
+</section>
+    <section id="study-planner" class="page tool-page">
+      <div class="container">
+        <h1>Study Planner</h1>
+        <input type="text" id="plan-subj" placeholder="Subject / Topic">
+        <input type="time" id="plan-time">
+        <button onclick="addPlan()">Add</button>
+        <ul id="plan-ul"></ul>
+        <button class="back-btn" onclick="showPage('tools')">← Back</button>
+      </div>
+    </section>
+
+   <section id="about" class="page about-section">
+  <div class="container">
+    <div class="about-content">
+      <h1 class="about-title animate-slide-down">About Student Tools</h1>
+      
+      <div class="about-text animate-fade-in delay-1">
+        <p>
+          Student Tools is a <strong>100% free</strong>, <strong>offline-capable</strong> 
+          collection of utilities made <strong>by students — for students</strong>.
+        </p>
+        <p>
+          Built with pure <strong>HTML</strong>, <strong>CSS</strong> & <strong>JavaScript</strong> 
+          — no frameworks, no login, no tracking, no ads.
+        </p>
+      </div>
+
+      <div class="features-grid animate-fade-in delay-2">
+        <div class="feature-card">
+          <div class="feature-icon">💸</div>
+          <h3>Completely Free</h3>
+          <p>Always will be. No hidden costs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Privacy First</h3>
+          <p>Everything runs in your browser. No data leaves your device.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Offline Ready</h3>
+          <p>Works without internet after first load.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3>Vanilla Only</h3>
+          <p>No React, no Vue, no bloat — just clean code.</p>
+        </div>
+      </div>
+
+      <div class="made-with animate-fade-in delay-3">
+        <p>Made with ❤️ in India</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="contact" class="page contact-section">
+  <div class="container">
+    <h1 class="contact-title animate-slide-down">Get in Touch</h1>
+    <p class="contact-subtitle animate-fade-in delay-1">
+      Have questions, suggestions, or just want to say hi? We'd love to hear from you!
+    </p>
+
+    <form class="contact-form animate-fade-in delay-2">
+      <div class="input-group">
+        <input type="text" id="name" required>
+        <label for="name">Your Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" required>
+        <label for="email">Email Address</label>
+      </div>
+
+      <div class="input-group textarea-group">
+        <textarea id="message" rows="6" required></textarea>
+        <label for="message">Your Message...</label>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Send Message
+        <span class="btn-icon">→</span>
+      </button>
+    </form>
+  </div>
+</section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
